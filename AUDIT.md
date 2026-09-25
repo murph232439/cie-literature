@@ -84,10 +84,11 @@ These mappings display `课堂记录已定位；待统一版本逐字核验` and
 
 ## Functional verification
 
-The generated page is checked for:
+The generated page was opened in the browser and checked:
 
-- Question card opening the matching question id
-- Search results opening the matching question
-- Work filtering
-- Random question drawing
-- Past-paper card navigation
+- Question card: `苏文纨的挑拨与感情破裂` opened the same title and question.
+- Paragraph order: Point 1 is Su Wenwan slandering Tang Xiaofu to Fang Hongjian; Point 2 is Su Wenwan showing Fang's letters and history to Tang Xiaofu.
+- Search: `点金银行` returned the two expected diploma-related questions.
+- Filter: selecting `《水》` returned 9 questions and removed the 《围城》 questions.
+- Random draw: clicking the draw button produced a question and exposed the `看论点与原文定位` action.
+- Past-paper navigation: `赵辛楣对孙柔嘉有哪些看法？请举例分析。` opened `赵辛楣对孙柔嘉的看法`, not `赵辛楣与方鸿渐`.
