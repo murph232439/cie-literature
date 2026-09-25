@@ -1,0 +1,21 @@
+SOURCE_FILE: /Users/Abby/Documents/Codex/Project-021-CIE中文文学赏析备考/outputs/index.html
+TARGET_SEARCH_TEXT: 这姓方的青年人是容易对付的
+QUESTION_ID: fortress-intellectuals
+QUESTION_TITLE: 三闾大学中的权力与知识分子群像
+POINT_INDEX: 1
+TARGET_EVIDENCE_FOUND: YES
+EVIDENCE_CONTAINS_EASY_TO_DEAL: YES
+EVIDENCE_CONTAINS_TELL_XINMEI: YES
+BEFORE_POINT: 高松年先以方鸿渐“容易对付”衡量其可控性，再借学历和资历压低聘任条件，显出职称已成为行政支配的工具。
+AFTER_POINT: 高松年先以方鸿渐“容易对付”衡量其可控性，再借学历和资历压低聘任条件，显出职称已成为行政支配的工具。
+BEFORE_EXPLAIN: 高松年开口先说方鸿渐“容易对付”，关注的并不是他的教学能力，而是他会不会反抗校方的安排。随后，“没有学位”“游学生”“并非学政治的”被连续列成理由，表面像在核查资格，实际却是在为至多做副教授的既定决定补充说辞。太冤枉了故意把原先的教授聘任说成过高待遇，而可以叫辛楣对他说又把降职消息转交旁人传达，显出他既掌握职位分配，又避免亲自承担失信的责任。 文本中的动作、称谓和关系顺序共同限制着结论范围，需要只依据已经出现的细节作出判断。
+AFTER_EXPLAIN: 高松年先称方鸿渐“容易对付”，衡量的不是他的教学能力，而是他会不会反抗校方的安排。接着，他把“没有学位”“游学生”和“并非学政治的”排成一串资格问题，为“至多做副教授”的决定补足理由；原先的教授聘任则被“太冤枉了”改说成不应给予的优待。最后，他要辛楣代为传话，既保留了分配职位的权力，也避开了亲自解释失信的责任。
+BEFORE_LINK: 高松年借聘任条件把方鸿渐置于被动位置，职位因而不再取决于明确的契约；这种以行政安排制造既成事实的做法，随后也会出现在系主任职位的争夺中。
+AFTER_LINK: 高松年借资格审查把原有聘任改写成恩惠，方鸿渐因而被置于被动位置；这种以行政安排制造既成事实的做法，随后也会出现在系主任职位的争夺中。
+AFTER_EXPLAIN_CHARACTER_COUNT: 156
+AFTER_EXPLAIN_HAS_ELLIPSIS: NO
+AFTER_EXPLAIN_HAS_FORBIDDEN_TEMPLATE: NO
+OUT_OF_EVIDENCE_QUOTATIONS_IN_AFTER_EXPLAIN: NONE
+JSON_PARSE: PASS
+ONLY_ONE_POINT_MODIFIED: YES
+OTHER_EXISTING_FILES_MODIFIED: NO
