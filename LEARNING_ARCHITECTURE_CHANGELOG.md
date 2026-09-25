@@ -1,100 +1,76 @@
 # Learning Architecture Changelog
 
-- 修改日期：2026-09-25T20:50:47+08:00
-- 原题数：57
-- 原始备份：`backups/index.before-learning-architecture.html`
-- 原始题库备份：`backups/question_bank.before-learning-architecture.json`
+修改日期：2026-09-25
 
-## Learning Levels
+## 新增字段完整清单
 
-- 《围城》：共 29 题；必背 8；高频变式 16；教师拓展 5
-- 《莎菲女士的日记》：共 9 题；必背 4；高频变式 4；教师拓展 1
-- 《水》：共 9 题；必背 4；高频变式 3；教师拓展 2
-- 《在医院中》：共 10 题；必背 4；高频变式 5；教师拓展 1
+| 字段 | 用途 |
+|---|---|
+| learningLevel | 标记 core、variation 或 teacher-extension |
+| studyPriority | 标记必背、高频变式或拓展 |
+| parentQuestionId | variation 与教师拓展指向对应 core |
+| doNotMemorizeSeparately | 标记变式与拓展不单独背全文 |
+| questionFocus | 用学生可理解的句子说明题目真正要求 |
+| socraticQuestions | 审题前引导学生思考 |
+| notAsking | 明确常见跑题方向 |
+| threePartPlan | 给出三段结构和可模仿起句 |
+| commonMistakes | 列出错误、原因和修正方法 |
+| summary | 30 字内概括本题逻辑 |
+| studentNote | 给出复习提示或教师拓展说明 |
+| supplementaryEvidence | 保存改版前被重组替代但仍须保留的补充证据 |
+| answerRoutes | 同一题包含两种可选对象时提供分路线 |
 
-## 逐题分层
+## 分层变更
 
-- fortress-tang-relationship：core；parentQuestionId=None
-- saffi-character：core；parentQuestionId=None
-- saffi-awakening：core；parentQuestionId=None
-- saffi-psychology：variation；parentQuestionId=saffi-diary-form
-- saffi-love：core；parentQuestionId=None
-- water-symbol：core；parentQuestionId=None
-- water-change：core；parentQuestionId=None
-- water-hero：variation；parentQuestionId=water-change
-- water-theme：core；parentQuestionId=None
-- hospital-luping：core；parentQuestionId=None
-- hospital-growth：core；parentQuestionId=None
-- hospital-environment：core；parentQuestionId=None
-- hospital-intellectual：variation；parentQuestionId=hospital-individual-collective
-- fortress-fang：core；parentQuestionId=None
-- fortress-satire：core；parentQuestionId=None
-- fortress-marriage：core；parentQuestionId=None
-- fortress-parallel：variation；parentQuestionId=fortress-fang
-- saffi-loneliness：variation；parentQuestionId=saffi-awakening
-- saffi-diary-form：core；parentQuestionId=None
-- water-contrast：core；parentQuestionId=None
-- water-wangdabao：variation；parentQuestionId=water-change
-- hospital-group：variation；parentQuestionId=hospital-individual-collective
-- hospital-gas：variation；parentQuestionId=hospital-growth
-- hospital-ending：variation；parentQuestionId=hospital-growth
-- fortress-diploma：core；parentQuestionId=None
-- fortress-intellectuals：core；parentQuestionId=None
-- fortress-metaphor：variation；parentQuestionId=fortress-satire
-- fortress-group-portrait：teacher-extension；parentQuestionId=fortress-intellectuals
-- fortress-language-satire：variation；parentQuestionId=fortress-satire
-- fortress-concrete-balance：variation；parentQuestionId=fortress-satire
-- saffi-imperfect-vanguard：variation；parentQuestionId=saffi-character
-- saffi-awakening-tragedy：variation；parentQuestionId=saffi-awakening
-- saffi-enlightenment-revolution：teacher-extension；parentQuestionId=saffi-awakening
-- water-intellectual-stance：variation；parentQuestionId=water-theme
-- water-1930s-ecology：teacher-extension；parentQuestionId=water-theme
-- water-discourse-tension：teacher-extension；parentQuestionId=water-theme
-- hospital-individual-collective：core；parentQuestionId=None
-- hospital-dual-luping：teacher-extension；parentQuestionId=hospital-luping
-- hospital-growth-useful：variation；parentQuestionId=hospital-growth
-- fortress-sun-character：variation；parentQuestionId=fortress-marriage
-- fortress-tang-character：variation；parentQuestionId=fortress-tang-relationship
-- fortress-gao-songnian-character：variation；parentQuestionId=fortress-education-system-satire
-- fortress-li-meiting-character：variation；parentQuestionId=fortress-intellectuals
-- fortress-fang-father-character：teacher-extension；parentQuestionId=fortress-fang
-- fortress-fang-mother-character：teacher-extension；parentQuestionId=fortress-marriage
-- fortress-su-wenwan-character：variation；parentQuestionId=fortress-tang-relationship
-- fortress-zhao-xinmei-character：variation；parentQuestionId=fortress-parallel
-- fortress-new-women-portrait：teacher-extension；parentQuestionId=fortress-tang-relationship
-- fortress-old-women-choices：teacher-extension；parentQuestionId=fortress-marriage
-- fortress-education-system-satire：core；parentQuestionId=None
-- fortress-zhao-sun-view：variation；parentQuestionId=fortress-sun-character
-- fortress-gao-fang-attitude：variation；parentQuestionId=fortress-education-system-satire
-- fortress-fang-leaves-university：variation；parentQuestionId=fortress-intellectuals
-- fortress-travel-social-problems：variation；parentQuestionId=fortress-education-system-satire
-- fortress-diploma-social-package：variation；parentQuestionId=fortress-diploma
-- fortress-baoxia-relationship：variation；parentQuestionId=fortress-fang
-- fortress-fang-su-relationship：core；parentQuestionId=None
+- core：20 题
+- variation：{counts["variation"]} 题
+- teacher-extension：{counts["teacher-extension"]} 题
+- 所有 variation 与 teacher-extension 的 parentQuestionId 均指向有效题目。
 
-## 结构校正
+## Point 重排与类型更正
 
-- `fortress-tang-relationship`：Point 顺序固定为苏文纨先贬低唐晓芙、再向唐晓芙提供方鸿渐旧事，最后写双方性格与误会如何导致分手。
-- `fortress-gao-fang-attitude`：thesis、Points、Evidence 与 Explain 统一为高松年从招揽、降级到解聘的态度变化，主体始终为高松年。
-- `fortress-parallel`：第三段 Point 明确回答平行关系的对照作用，并同时回扣人物塑造与社会环境。
-- `fortress-diploma`：学习路径固定为爱情、事业、婚姻三个层面，再总结学历崇拜与身份包装的讽刺。
-- `fortress-zhao-sun-view`：三段均以赵辛楣为观察主体，依次写照料与避嫌、警惕、订婚后的受限提醒。
-- `fortress-fang-leaves-university`：三段按职业基础、校内环境和取消续聘形成原因链。
-- `fortress-baoxia-relationship`：重点改为鲍小姐的现实主动性如何触发方鸿渐的虚荣、轻信与自我想象。
-- `fortress-fang-su-relationship`：三段统一写方鸿渐的欣赏、暧昧享受、拖延伤害与责任逃避。
-- `hospital-environment`：三段固定为现实处境、环境对人物行动的压迫、专业理想与组织现实的矛盾。
-- `hospital-intellectual`：类型由人物关系改为人物与环境冲突。
-- `fortress-old-women-choices`：题干改为旧式家庭与婚姻关系如何影响方鸿渐的婚恋选择。
-- `fortress-new-women-portrait`：学生提示明确要求比较婚恋、名誉、阶层与社会限制，不使用道德标签。
+- `fortress-parallel`：第三段 Point 改为明确回答平行关系的对照作用。
+- `fortress-gao-fang-attitude`：按招揽、降级控制、解聘切割重组三阶段。
+- `hospital-intellectual`：类型由“人物关系”更正为“人物与环境冲突”。
 
-## 分类口径说明
+## Gao 题补充证据保留
 
-- 需求示例列出《围城》3 道教师拓展题，但题库原有 29 道《围城》题，其中 `fortress-fang-father-character` 与 `fortress-fang-mother-character` 也属于理论跨度较大的人物拓展题。
-- 根据“不删除题目”的约束，这两题保留为 `teacher-extension`，因此《围城》教师拓展实际为 5 题。
+- `fortress-gao-fang-attitude.supplementaryEvidence` 长度固定为 2。
+- 第一项保留原先关于“容易对付”和改聘副教授的完整证据与第六章定位。
+- 第二项保留原先关于增加英文课、把方鸿渐作为可调度劳动力的完整证据与第七章定位。
+- 当前三个主 Point 的 evidence 均未删除。
 
-## 仍需人工复核
+## 学生模式新增模块
 
-- `saffi-enlightenment-revolution`：启蒙与革命语境需要外部分析背景。
-- `water-1930s-ecology`：涉及1930年代上海文学生态。
-- `water-discourse-tension`：涉及个性话语与革命话语理论。
-- `fortress-old-women-choices`、`fortress-new-women-portrait`：群像跨度大，需人工复核男女角色与社会关系表述。
+- 核心题底部显示“我会换一种问法考你”。
+- 存在 direct variation 时逐项展示变式。
+- 没有 direct variation 时显示统一兜底复习模块。
+- 完整 PEEL 与补充证据默认折叠，学生点击后展开。
+
+## 教师模式新增模块
+
+- 教师模式显示全部 57 题及 learningLevel、studyPriority、parentQuestionId、studentNote 和 needsManualReview。
+- 两道家庭人物题确认不再视为未分类缺口。
+- 无 direct variation 的兜底模块额外显示“可在后续题库扩展中添加 direct variation。”
+
+## 五道无 direct variation 的核心题
+
+`saffi-love`、`water-symbol`、`hospital-environment`、`water-contrast`、`fortress-fang-su-relationship` 未虚构新题，统一显示暂未配置直接变式的复习说明。
+
+## 两道遗漏家庭人物题最终确认
+
+原始分层清单漏列两题。经补充分层：
+- 方遯翁题归入“方鸿渐人物与家庭背景”教师拓展；
+- 方老太太题归入“婚姻围城与家庭关系”教师拓展。
+这两项已获确认，不再视为未分类缺口。
+
+## 人工复核项
+
+- `fortress-group-portrait`：教师拓展题，普通考试复习不必优先。
+- `saffi-enlightenment-revolution`：教师拓展题，普通考试复习不必优先。
+- `water-1930s-ecology`：教师拓展题，普通考试复习不必优先。
+- `water-discourse-tension`：教师拓展题，普通考试复习不必优先。
+- `hospital-dual-luping`：教师拓展题，普通考试复习不必优先。
+- `fortress-new-women-portrait`：教师拓展题：比较五位女性，不要用“纯洁”或“心机”作道德标签。
+- `fortress-old-women-choices`：教师拓展题：人物、家庭和婚恋结构同时涉及，不作为普通学生的必背题。
+
