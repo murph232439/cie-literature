@@ -162,20 +162,10 @@ function listView(){
   var q=state.query;
   var arr=DATA.filter(function(x){return learningMatches(x)&&(state.work==="all"||x.workKey===state.work)&&(!q||itemText(x).indexOf(q)>=0)});
   var workChips='<div class="chips"><button class="'+(state.work==="all"?"on":"")+'" data-work="all">全部</button>'+Object.keys(WORKS).map(function(k){return '<button class="'+(state.work===k?"on":"")+'" data-work="'+k+'">'+esc(WORKS[k])+'</button>'}).join("")+'</div>';
-  var level='';
-  if(state.learningMode==="student"){
-    level='<div class="levelFilters"><button class="'+(state.levelFilter==="core"?"on":"")+'" data-level="core">必背母题</button><button class="'+(state.levelFilter==="variation"?"on":"")+'" data-level="variation">高频变式</button><button class="'+(state.levelFilter==="all"?"on":"")+'" data-level="all">全部学生题</button></div><label class="teacherToggle"><input type="checkbox" id="showTeacher" '+(state.showTeacher?'checked':'')+'>显示教师拓展</label>'+sharedFilters();
-  }else if(state.learningMode==="full"){
-    level='<label class="teacherToggle"><input type="checkbox" id="showTeacher" '+(state.showTeacher?'checked':'')+'>显示教师拓展</label>'+sharedFilters();
-  }else if(state.learningMode==="teacher"){
-    var types=['all'].concat(Array.from(new Set(DATA.map(function(x){return x.type}))));
-    var levels=[['all','全部层级'],['core','必背母题'],['variation','高频变式'],['teacher-extension','教师拓展']];
-    level='<div class="field"><b>教师筛选</b><select id="teacherLevel">'+levels.map(function(v){return '<option value="'+v[0]+'" '+(state.teacherLevel===v[0]?'selected':'')+'>'+esc(v[1])+'</option>'}).join("")+'</select><select id="teacherType" style="margin-top:6px">'+types.map(function(t){return '<option value="'+esc(t)+'" '+(state.teacherType===t?'selected':'')+'>'+esc(t==='all'?'全部题型':t)+'</option>'}).join("")+'</select></div>'+sharedFilters();
-  }
   var cards=arr.map(function(x){
     return '<div class="card" data-open="'+esc(x.id)+'"><div class="meta"><span class="tag">'+esc(x.studyPriority||'')+'</span><span class="tag">'+esc(x.type)+'</span><span class="tag">'+esc(workName(x.workKey))+'</span></div><h3>'+esc(x.title)+'</h3><p>'+esc(x.summary||x.prompt)+'</p><button type="button" class="primary" data-open="'+esc(x.id)+'">打开答题页</button></div>'
   }).join("")||'<div class="empty">没有找到匹配的母题</div>';
-  return '<input class="search" id="search" placeholder="搜索题目、作品或关键词" value="'+esc(q)+'">'+workChips+learningStats()+level+'<div class="count">当前显示 '+arr.length+' 道题</div>'+cards;
+  return '<input class="search" id="search" placeholder="搜索题目、作品或关键词" value="'+esc(q)+'">'+workChips+learningStats()+cards;
 }
 function matchView(){var results=DATA.filter(function(x){return learningMatches(x)}).map(function(x){return {item:x,score:scoreItem(x,state.matchQuery)}}).filter(function(x){return x.score>0}).sort(function(a,b){return b.score-a.score}).slice(0,3);var html='<textarea class="matchBox" id="matchBox" placeholder="粘贴题目，例如：分析《围城》的讽刺艺术">'+esc(state.matchQuery)+'</textarea><button class="primary" id="doMatch">匹配母题</button>';if(state.matchQuery&&results.length){html+='<div class="hint">最接近的母题</div>'+results.map(function(r){var kws=matchedKeywords(r.item,state.matchQuery).join("、");return '<div class="result" data-open="'+r.item.id+'"><span class="score">匹配 '+r.score+'</span><h3>'+esc(r.item.title)+'</h3><p>'+esc(levelName(r.item))+' · '+esc(r.item.work)+' · '+esc(r.item.type)+(kws?' · '+esc(kws):'')+'</p><p>'+esc(r.item.summary||r.item.thesis)+'</p><button type="button" class="ghost" data-open="'+esc(r.item.id)+'" style="margin-top:9px">打开答题页</button></div>'}).join("")}else if(state.matchQuery){html+='<div class="empty">暂时没有匹配到母题，换一个题目关键词试试</div>'}return html}
 function relatedButtons(ids){return (ids||[]).map(function(id){var item=DATA.find(function(x){return x.id===id});return item?'<button class="ghost" style="width:auto;display:inline-block;padding:7px 10px;margin:6px 6px 0 0;font-size:12.5px" data-related="'+esc(id)+'">'+esc(item.title)+'</button>':''}).join("")}
